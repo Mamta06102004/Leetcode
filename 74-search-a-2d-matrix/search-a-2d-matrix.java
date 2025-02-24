@@ -8,12 +8,19 @@ class Solution {
             int mid = lo + (hi - lo) / 2;
             int r = mid / m;
             int c = mid % m;
-            if (matrix[r][c] == target)
+            if (matrix[r][c] == target){
+
+            
                 return true;
-            else if (matrix[r][c] < target)
-                lo = mid + 1;
-            else
+            }
+            else if (matrix[r][c] > target){
+
                 hi = mid - 1;
+            }
+            else{
+
+                lo = mid + 1;
+            }
 
         }
         return false;

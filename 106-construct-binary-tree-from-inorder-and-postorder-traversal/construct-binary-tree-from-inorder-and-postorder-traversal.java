@@ -17,28 +17,26 @@ class Solution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         int n = inorder.length;
         int m = postorder.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<inorder.length; i++){
+            map.put(inorder[i], i);
+        }
 
-        return buildtreehelper(inorder,0,n-1,postorder,0,m-1);
+        return buildtreehelper(inorder,0,n-1,postorder,0,m-1,map);
     }
 
     public TreeNode buildtreehelper(int[] in, int is, int ie,
-                                         int[] post, int pos, int poe){
+            int[] post, int pos, int poe, HashMap<Integer, Integer> map){
         if(is>ie || pos>poe){
             return null;
         }
         TreeNode root = new TreeNode(post[poe]);
 
-        int idx = -1;
-        for(int i=0; i<in.length; i++){
-            if(in[i] == post[poe]){
-                idx = i;
-                break;
-            }
-        }
+        int idx = map.get(post[poe]);
         int count = idx-is;
 
-        root.left = buildtreehelper(in, is, idx-1, post, pos, pos+count-1);
-        root.right = buildtreehelper(in, idx+1, ie, post, pos+count, poe-1);
+        root.left = buildtreehelper(in, is, idx-1, post, pos, pos+count-1,map);
+        root.right = buildtreehelper(in, idx+1, ie, post, pos+count, poe-1,map);
 
         return root;
 

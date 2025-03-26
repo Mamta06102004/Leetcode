@@ -11,10 +11,9 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) {
-            return true; // A single node or an empty list is a palindrome
+            return true; 
         }
 
-        // Step 1: Find the middle of the linked list
         ListNode slow = head;
         ListNode fast = head;
 
@@ -23,23 +22,20 @@ class Solution {
             fast = fast.next.next;
         }
 
-        // Step 2: Reverse the second half of the list
         ListNode secondHalf = reverseList(slow);
 
-        // Step 3: Compare the first half and the reversed second half
         ListNode firstHalf = head;
         while (secondHalf != null) {
             if (firstHalf.val != secondHalf.val) {
-                return false; // If values don't match, it's not a palindrome
+                return false; 
             }
             firstHalf = firstHalf.next;
             secondHalf = secondHalf.next;
         }
 
-        return true; // All values matched, so it's a palindrome
+        return true; 
     }
 
-    // Helper function to reverse a linked list
     private ListNode reverseList(ListNode head) {
         ListNode prev = null;
         while (head != null) {

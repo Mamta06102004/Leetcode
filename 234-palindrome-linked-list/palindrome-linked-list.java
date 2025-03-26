@@ -16,14 +16,12 @@ class Solution {
 
         ListNode slow = head;
         ListNode fast = head;
-
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
 
         ListNode secondHalf = reverseList(slow);
-
         ListNode firstHalf = head;
         while (secondHalf != null) {
             if (firstHalf.val != secondHalf.val) {
@@ -32,7 +30,6 @@ class Solution {
             firstHalf = firstHalf.next;
             secondHalf = secondHalf.next;
         }
-
         return true; 
     }
 

@@ -1,30 +1,45 @@
 class Solution {
     public int minimumIndex(List<Integer> nums) {
         int n = nums.size();
-        Map<Integer, Integer> freqMap = new HashMap<>();
+
+        // Step 1: Find the dominant element using Boyer-Moore Voting Algorithm
+        int candidate = nums.get(0), count = 0;
         for (int num : nums) {
-            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
-        }
-        int dominantElement = -1, totalOccurrences = 0;
-        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
-            if (entry.getValue() * 2 > n) { // Check if it is dominant
-                dominantElement = entry.getKey();
-                totalOccurrences = entry.getValue();
-                break;
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+                if (count == 0) {
+                    candidate = num;
+                    count = 1;
+                }
             }
         }
-        int f1 = 0; // Frequency of dominantElement in left partition
+
+        // Step 2: Count occurrences of the dominant element
+        int totalOccurrences = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                totalOccurrences++;
+            }
+        }
+
+        // Step 3: Find the minimum valid split index
+        int leftCount = 0;
         for (int i = 0; i < n - 1; i++) {
-            if (nums.get(i) == dominantElement) {
-                f1++;
+            if (nums.get(i) == candidate) {
+                leftCount++;
             }
-            int f2 = totalOccurrences - f1; // Frequency in right partition
-            int leftSize = i + 1;
-            int rightSize = n - leftSize;
-            if (f1 * 2 > leftSize && f2 * 2 > rightSize) {
+
+            int rightCount = totalOccurrences - leftCount;
+            int leftSize = i + 1, rightSize = n - leftSize;
+
+            // Check if candidate is dominant in both partitions
+            if (leftCount * 2 > leftSize && rightCount * 2 > rightSize) {
                 return i;
             }
         }
+
         return -1;
     }
 }

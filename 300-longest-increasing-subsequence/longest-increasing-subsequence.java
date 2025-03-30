@@ -1,5 +1,8 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
+
+        // NlogN approach
+
         int[] dp = new int[nums.length];
         int ans = 0;
         for(int i=0; i<nums.length; i++){

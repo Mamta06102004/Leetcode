@@ -19,10 +19,10 @@ class Solution {
         int nextque = i + brainpower + 1;
 
         long skip = helper(que,i+1,dp);        
-        long solve = points + helper(que,nextque,dp); 
+        long solve = helper(que,nextque,dp); 
 
-        dp[i] = Math.max(skip, solve);
-        return Math.max(skip, solve);        
+        dp[i] = Math.max(skip, solve+points);
+        return Math.max(skip, solve+points);        
 
     }
 }

@@ -1,5 +1,8 @@
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
+
+        //RECURSIVE APPROACH
+
         int n = text1.length();
         int m = text2.length();
         int[][] dp = new int[n][m];

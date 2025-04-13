@@ -21,7 +21,6 @@ class Solution {
             base = (base * base) % mod;
             exp >>= 1;
         }
-
         return result;
     }
 }

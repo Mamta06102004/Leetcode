@@ -1,5 +1,5 @@
 class Solution {
-        class BIT {
+    class BIT {
         long[] tree;
         int n;
 
@@ -43,5 +43,6 @@ class Solution {
         }
 
         return ans;
+        
     }
 }

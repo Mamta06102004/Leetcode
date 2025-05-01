@@ -3,7 +3,6 @@ class Solution {
         Arrays.sort(tasks);
         Arrays.sort(workers);
         int low = 0, high = Math.min(tasks.length, workers.length);
-
         while (low < high) {
             int mid = (low + high + 1) / 2;
             if (canAssign(tasks, workers, pills, strength, mid)) {
@@ -12,7 +11,6 @@ class Solution {
                 high = mid - 1;
             }
         }
-
         return low;
     }
 
@@ -23,7 +21,6 @@ class Solution {
 
         for (int t = taskCount - 1; t >= 0; t--) {
             int task = tasks[t];
-
             if (!boosted.isEmpty() && boosted.peekFirst() >= task) {
                 boosted.pollFirst();
             } else if (w >= 0 && workers[w] >= task) {
@@ -39,7 +36,6 @@ class Solution {
                 freePills--;
             }
         }
-
         return true;
     }
 }

@@ -20,7 +20,7 @@ class Solution {
                     right[i] = Integer.MAX_VALUE;
                 }
             } 
-            else{ // L
+            else{ 
                 time = Integer.MAX_VALUE;
                 right[i] = Integer.MAX_VALUE;
             }
@@ -45,19 +45,18 @@ class Solution {
                 left[i] = Integer.MAX_VALUE;
             }
         }
-
-        // Final result
         char[] ans = new char[n];
         for (int i = 0; i < n; i++) {
             if (left[i] == right[i]) {
-                ans[i] = dominoes.charAt(i); // Could be '.', 'R', or 'L'
-            } else if (left[i] < right[i]) {
+                ans[i] = dominoes.charAt(i); 
+            } 
+            else if(left[i] < right[i]){
                 ans[i] = 'L';
-            } else if (right[i] < left[i]) {
+            } 
+            else if(right[i] < left[i]){
                 ans[i] = 'R';
             }
         }
         return new String(ans);
-
     }
 }

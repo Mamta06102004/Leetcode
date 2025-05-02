@@ -5,20 +5,22 @@ class Solution {
         int[] right = new int[n];
         int time = Integer.MAX_VALUE;
 
-        // Right force
-        time = Integer.MAX_VALUE;
-        for (int i = 0; i < n; i++) {
-            if (dominoes.charAt(i) == 'R') {
+        // right force
+        for(int i = 0; i < n; i++){
+            if(dominoes.charAt(i) == 'R'){
                 time = 0;
                 right[i] = time;
-            } else if (dominoes.charAt(i) == '.') {
-                if (time != Integer.MAX_VALUE) {
+            } 
+            else if(dominoes.charAt(i) == '.'){
+                if(time != Integer.MAX_VALUE){
                     time++;
                     right[i] = time;
-                } else {
+                } 
+                else{
                     right[i] = Integer.MAX_VALUE;
                 }
-            } else { // L
+            } 
+            else{ // L
                 time = Integer.MAX_VALUE;
                 right[i] = Integer.MAX_VALUE;
             }
@@ -26,12 +28,13 @@ class Solution {
 
         // Left force
         time = Integer.MAX_VALUE;
-        for (int i = n - 1; i >= 0; i--) {
-            if (dominoes.charAt(i) == 'L') {
+        for(int i = n - 1; i >= 0; i--){
+            if(dominoes.charAt(i) == 'L'){
                 time = 0;
                 left[i] = time;
-            } else if (dominoes.charAt(i) == '.') {
-                if (time != Integer.MAX_VALUE) {
+            }
+            else if(dominoes.charAt(i) == '.'){
+                if(time != Integer.MAX_VALUE){
                     time++;
                     left[i] = time;
                 } else {

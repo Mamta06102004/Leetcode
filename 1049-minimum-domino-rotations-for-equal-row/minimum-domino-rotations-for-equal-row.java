@@ -31,8 +31,8 @@ class Solution {
         }
 
         int result = -1;
-        if (possible1) result = Math.min(flips1Top, flips1Bottom);
-        if (possible2) {
+        if (possible1 == true) result = Math.min(flips1Top, flips1Bottom);
+        if (possible2 == true) {
             int flips = Math.min(flips2Top, flips2Bottom);
             if (result == -1 || flips < result) result = flips;
         }
